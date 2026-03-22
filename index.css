@@ -4,10 +4,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     min-width: 400px;
     max-width: 400px;
-    height:  500px;
-    border: 4px solid #0077B5;
+    max-height: 500px;
     overflow-y: auto; 
-    box-sizing: border-box;
     overflow-x: hidden;
 }
 
@@ -18,6 +16,7 @@ input {
     border: 2px dashed #0077B5;
     margin-bottom: 4px;
     font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
 
