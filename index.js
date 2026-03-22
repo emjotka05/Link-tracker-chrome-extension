@@ -1,47 +1,63 @@
-let myLeads = []
+let myLinks = []
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
-const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 const tabBtn = document.getElementById("tab-btn")
+const linksFromLocalStorage = JSON.parse(localStorage.getItem("myLinks"))
 
-if (leadsFromLocalStorage) {
-    myLeads = leadsFromLocalStorage
-    render(myLeads)
+if (linksFromLocalStorage){
+    myLinks = linksFromLocalStorage
+    render(myLinks)
 }
 
 tabBtn.addEventListener("click", function(){    
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        myLeads.push(tabs[0].url)
-        localStorage.setItem("myLeads", JSON.stringify(myLeads) )
-        render(myLeads)
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){ //works when used as extension
+        const newLink = {
+            value: tabs[0].url,
+            isDescription: false
+        }
+        myLinks.push(newLink)
+        localStorage.setItem("myLinks", JSON.stringify(myLinks))
+        render(myLinks)
     })
 })
 
-function render(leads) {
+inputBtn.addEventListener("click", function(){
+    if (inputEl.value.trim() === "") return; 
+
+    const newDesc = {
+        value: inputEl.value,
+        isDescription: true
+    }
+    myLinks.push(newDesc)
+    inputEl.value = ""
+    localStorage.setItem("myLinks", JSON.stringify(myLinks))
+    render(myLinks)
+})
+
+deleteBtn.addEventListener("dblclick", function(){
+    localStorage.clear()
+    myLinks = []
+    render(myLinks)
+})
+
+function render(links) {
     let listItems = ""
-    for (let i = 0; i < leads.length; i++) {
-        listItems += `
-            <li>
-                <a target='_blank' href='${leads[i]}'>
-                    ${leads[i]}
-                </a>
-            </li>
-        `
+    for (let i = 0; i < links.length; i++){
+        const content = links[i].value 
+        if (links[i].isDescription){
+            listItems += `<li>${content}</li>`
+        }else{
+            listItems += `
+                <li>
+                    <a target='_blank' href='${content}'>
+                        ${content}
+                    </a>
+                </li>
+            `
+        }
     }
     ulEl.innerHTML = listItems
 }
 
-deleteBtn.addEventListener("dblclick", function() {
-    localStorage.clear()
-    myLeads = []
-    render(myLeads)
-})
-
-inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
-    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
-    render(myLeads)
-})

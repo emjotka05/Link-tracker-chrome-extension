@@ -12,6 +12,7 @@ input {
     box-sizing: border-box;
     border: 2px dashed #0077B5;
     margin-bottom: 4px;
+    font-size: 1.5rem;
 }
 
 
@@ -25,7 +26,7 @@ button {
     border-radius: 25px;
     margin-top: 1rem;
     transition: 0.3s ease;
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
 }
 button:hover{
     transform: scale(110%);
