@@ -36,7 +36,7 @@ inputBtn.addEventListener("click", function(){
     render(myLinks)
 })
 
-deleteBtn.addEventListener("dblclick", function(){
+deleteBtn.addEventListener("click", function(){
     localStorage.clear()
     myLinks = []
     render(myLinks)
