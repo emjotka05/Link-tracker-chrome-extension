@@ -1,6 +1,5 @@
 # Link-tracker-chrome-extension
-Link Saver Pro
-A Chrome extension for saving URLs and text notes directly to the browser's local storage.
+A Chrome extension for saving URLs.
 
 # Features
 Save the current active tab URL.
