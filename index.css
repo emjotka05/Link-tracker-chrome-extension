@@ -43,16 +43,22 @@ button:hover{
 #delete-btn:hover{
     background: #0077B5;
     color: white;
+    
+
 }
 
 ul {
     margin-top: 20px;
+    padding-left: 3px;
+    padding-right: 3px;
     list-style: none;
 }
 
 li {
-    margin-top: 5px;
+    margin-top: 7px;
     font-size: 1.15rem;
+    word-break: break-all; 
+    overflow-wrap: break-word;
 }
 
 a {
