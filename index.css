@@ -4,8 +4,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     min-width: 400px;
     max-width: 400px;
-    min-height: 700px;
-    max-height: 700px;
+    min-height: 600px;
+    max-height: 600px;
 }
 
 input {
@@ -43,14 +43,13 @@ button:hover{
 #delete-btn:hover{
     background: #0077B5;
     color: white;
-    
-
 }
 
 ul {
     margin-top: 20px;
     list-style: none;
-    padding-left: 0;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 li {
